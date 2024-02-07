@@ -30,7 +30,9 @@ public class AppiumTest {
 		
 		UiAutomator2Options options=new UiAutomator2Options();
 		options.setDeviceName("Demo2");
-		options.setApp(System.getProperty("user.dir")+"\\src\\test\\resources\\ApiDemos-debug.apk");
+		//options.setApp(System.getProperty("user.dir")+"\\src\\test\\resources\\ApiDemos-debug.apk");
+		//software-testing-app-stapp-0-2-22
+		options.setApp(System.getProperty("user.dir")+"\\src\\test\\resources\\software-testing-app-stapp-0-2-22.apk");
 		driver=new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.quit();
