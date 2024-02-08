@@ -3,7 +3,7 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="TestRunner">
         <classes>
-        	<class name="appium.AppiumTest"/>
+        	<class name="tests.AppiumTest"/>
         </classes>
     </test>
 </suite>
