@@ -5,7 +5,7 @@ package utils;
 public class Config {
 
 	public static String deviceType = "Emulator"; // Or "BrowserStack"
-	public static String deviceName = "Demo7"; // Name of emulator created in Android Studio or found via "adb devices"
+	public static String deviceName = "Demo8"; // Name of emulator created in Android Studio or found via "adb devices"
 
 	public static String appiumJSExecutor = "C:\\Program Files\\nodejs\\node_modules\\appium\\build\\lib\\main.js";
 	public static String appiumServer = "127.0.0.1";

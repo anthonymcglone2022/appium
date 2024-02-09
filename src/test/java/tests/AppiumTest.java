@@ -10,6 +10,7 @@ import io.appium.java_client.android.AndroidDriver;
 
 import pom.*;
 import driver.Driver;
+import utils.Operations;
 
 public class AppiumTest extends Driver {
 	
@@ -25,6 +26,10 @@ public class AppiumTest extends Driver {
 		LoginPage lP = new LoginPage(driver);
 		lP.clickSkipButton();
 		Thread.sleep(2000);
+
+		Operations.swipeLeft(driver);
+		
+		Thread.sleep(5000);
 	}
 
 }
