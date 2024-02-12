@@ -13,12 +13,11 @@ import driver.Driver;
 import utils.Operations;
 
 public class AppiumTest extends Driver {
-	
-	// TODO do browserstack capabilities
 
 	@Test
-	public void smokeFlow() throws MalformedURLException, InterruptedException {		
-
+	public void smokeFlow() throws MalformedURLException, InterruptedException {
+		
+		// Sleeps added for demo purposes, TODO replace these with WebDriverWait. 
 		Thread.sleep(2000);
 		
 		StartPage sP = new StartPage(driver);
@@ -27,11 +26,12 @@ public class AppiumTest extends Driver {
 		Thread.sleep(2000);
 		
 		LoginPage lP = new LoginPage(driver);
-		lP.clickSkipButton();
-		
+		lP.clickSkipButton();		
 		Thread.sleep(2000);
 
+		
 		Operations.swipeRight(driver);
+
 		
 		Thread.sleep(2000);
 		
@@ -74,8 +74,6 @@ public class AppiumTest extends Driver {
 		Thread.sleep(1000);
 		
 		aP.clickAddEventPageSaveButton();
-		Thread.sleep(5000);
-		
+		Thread.sleep(5000);	
 	}
-
 }

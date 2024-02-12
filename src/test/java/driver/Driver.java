@@ -7,6 +7,8 @@ import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 
+import org.openqa.selenium.remote.DesiredCapabilities;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.URL;
@@ -25,20 +27,20 @@ public class Driver {
 
     @BeforeClass
     public void startEnvironment() throws IOException {
-        if(config.deviceType.equals("Emulator")){
+        if(Config.runType.equals("Emulator")){
         	startServer();
-        	createDriver();
-        } else if (config.deviceType.equals("BrowserStack")) {
-            //bsCapabilities();
+        	emulatorDriver();
+        } else if (Config.runType.equals("BrowserStack")) {
+            browserStackDriver();
         }
     }
     
     @AfterClass
     public void stopEnvironment() {
-        if(config.deviceType.equals("Emulator")){
+        if(Config.runType.equals("Emulator")){
             driver.quit();
             service.stop();
-        } else if (config.deviceType.equals("BrowserStack")) {
+        } else if (Config.runType.equals("BrowserStack")) {
             driver.quit();
         }
     }    
@@ -50,7 +52,7 @@ public class Driver {
                     .withAppiumJS(new File(Config.appiumJSExecutor))
                     .withIPAddress(Config.appiumServer)
                     .withLogFile(new File(Config.appiumLog))
-                    .withTimeout(Duration.ofSeconds(200))
+                    .withTimeout(Duration.ofSeconds(Config.appiumServerTimeOut))
                     .usingPort(Config.appiumPort).build();
             service.start();
         }
@@ -74,13 +76,27 @@ public class Driver {
     }
     
     
-    public AndroidDriver createDriver() throws IOException {    	
+    public AndroidDriver emulatorDriver() throws IOException {    	
 		UiAutomator2Options options=new UiAutomator2Options();
-		options.setDeviceName(Config.deviceName);
+		options.setDeviceName(Config.emulatorDeviceName);
 		options.setApp(config.appLocation());
 		driver=new AndroidDriver(new URL(config.appiumURL()), options);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		return driver;     
     }    
-     
+
+    public AndroidDriver browserStackDriver() throws IOException {    	
+    	DesiredCapabilities capes = new DesiredCapabilities();
+    	
+    	capes.setCapability("deviceName", Config.browserStackDeviceName);
+    	capes.setCapability("os_version", Config.browserStackOsVersion);
+    	capes.setCapability("Project", Config.browserStackProject);
+    	capes.setCapability("build", Config.browserStackBuild);
+    	capes.setCapability("name", Config.browserStackName);
+    	capes.setCapability("app", Config.browserStackAppId);
+    	
+    	driver=new AndroidDriver(new URL(config.browserStackAppUrl()), capes);
+    	
+    	return driver;     
+    }
 }
