@@ -15,7 +15,7 @@ import utils.Operations;
 public class AppiumTest extends Driver {
 
     @Test
-    public void smokeFlow() throws MalformedURLException, InterruptedException {
+    public void addNewEventToEventPageSmokeFlow() throws MalformedURLException, InterruptedException {
 
         // Sleeps added for demo purposes, TODO replace these with WebDriverWait. 
         Thread.sleep(2000);
