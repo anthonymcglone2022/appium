@@ -19,17 +19,17 @@ import utils.Config;
 
 public class Driver {
 	
-	Config config = new Config();
-	
-	AppiumDriverLocalService service;
-	
-	public AndroidDriver driver;
+    Config config = new Config();
+
+    AppiumDriverLocalService service;
+
+    public AndroidDriver driver;
 
     @BeforeClass
     public void startEnvironment() throws IOException {
         if(Config.runType.equals("Emulator")){
-        	startServer();
-        	emulatorDriver();
+            startServer();
+            emulatorDriver();
         } else if (Config.runType.equals("BrowserStack")) {
             browserStackDriver();
         }
@@ -49,11 +49,11 @@ public class Driver {
         boolean running = isServerRunning(Config.appiumPort);
         if (!running) {
             service = new AppiumServiceBuilder()
-                    .withAppiumJS(new File(Config.appiumJSExecutor))
-                    .withIPAddress(Config.appiumServer)
-                    .withLogFile(new File(Config.appiumLog))
-                    .withTimeout(Duration.ofSeconds(Config.appiumServerTimeOut))
-                    .usingPort(Config.appiumPort).build();
+                .withAppiumJS(new File(Config.appiumJSExecutor))
+                .withIPAddress(Config.appiumServer)
+                .withLogFile(new File(Config.appiumLog))
+                .withTimeout(Duration.ofSeconds(Config.appiumServerTimeOut))
+                .usingPort(Config.appiumPort).build();
             service.start();
         }
         return service;
@@ -65,7 +65,6 @@ public class Driver {
         ServerSocket serverSock;
         try {
             serverSock = new ServerSocket(port);
-
             serverSock.close();
         } catch (IOException e) {
             isServerRunning = true;
@@ -74,15 +73,16 @@ public class Driver {
         }
         return isServerRunning;
     }
-    
-    
+        
     public AndroidDriver emulatorDriver() throws IOException {    	
-		UiAutomator2Options options=new UiAutomator2Options();
-		options.setDeviceName(Config.emulatorDeviceName);
-		options.setApp(config.appLocation());
-		driver=new AndroidDriver(new URL(config.appiumURL()), options);
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		return driver;     
+        UiAutomator2Options options=new UiAutomator2Options();
+        
+        options.setDeviceName(Config.emulatorDeviceName);
+        options.setApp(config.appLocation());
+        driver=new AndroidDriver(new URL(config.appiumURL()), options);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        
+        return driver;     
     }    
 
     public AndroidDriver browserStackDriver() throws IOException {    	

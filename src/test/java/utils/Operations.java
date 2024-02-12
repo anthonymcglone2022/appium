@@ -53,9 +53,9 @@ public class Operations {
     public static void swipeDown(AndroidDriver driver) {
     	Dimension screenSize = driver.manage().window().getSize();
     	
-		Point startPoint = new Point(screenSize.width / 2, screenSize.height / 4);
-		Point endPoint =  new Point(screenSize.width / 2, screenSize.height / 2); // downward    	
-    	
+        Point startPoint = new Point(screenSize.width / 2, screenSize.height / 4);
+        Point endPoint =  new Point(screenSize.width / 2, screenSize.height / 2); // downward    	
+
     	swipe(driver, startPoint, endPoint);
     }
 }
