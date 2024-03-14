@@ -10,7 +10,7 @@
 - You must edit the repo's `Config.java` (@ src/test/java/utils/) file with either "Emulator" or "BrowserStack", depending where you wish to run
 - If running locally, follow the [Appium quickstart](https://appium.io/docs/en/latest/quickstart/) for installation instructions
 - For running locally, edit the `Config.java` setting `appiumJSExecutor` to point to your installation of NodeJS
-- For running locally, deploy the STApp APK to Android Studio, editing `Config.java` with the name of the App
+- For running locally, deploy the STApp APK to an Android Studio emulator, editing `Config.java` with the name of the emulator
 - For Browserstack, the above 3 steps are not required, but you must create an account (to receive credentials) and POST the STApp app to [app-automate](https://www.browserstack.com/docs/app-automate/api-reference/appium/apps#upload-an-app) to receive your app's id `bs://`
 - For Browserstack, edit the `Config.java` file parameters `browserStackUserName` , `browserStackApiKey` , `browserStackAppId`
 
