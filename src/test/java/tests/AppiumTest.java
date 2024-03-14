@@ -17,7 +17,7 @@ public class AppiumTest extends Driver {
     @Test
     public void addNewEventToEventPageSmokeFlow() throws MalformedURLException, InterruptedException {
 
-        // Sleeps added for demo purposes, TODO replace these with WebDriverWait. 
+        // Sleeps added purely for demo purposes, TODO replace these with WebDriverWait. 
         Thread.sleep(2000);
 
         StartPage sP = new StartPage(driver);
@@ -29,7 +29,11 @@ public class AppiumTest extends Driver {
         lP.clickSkipButton();		
         Thread.sleep(2000);
 
-
+        /**
+         *
+         *  A 'typical' mobile operation, swiping.
+         *
+         */
         Operations.swipeRight(driver);
 
 
